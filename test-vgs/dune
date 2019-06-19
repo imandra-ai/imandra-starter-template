@@ -1,0 +1,6 @@
+(test
+ (name main)
+ (modes byte)
+ (libraries imandra-client.lib model alcotest)
+ (deps
+  (glob_files ../src-iml/*.iml)))

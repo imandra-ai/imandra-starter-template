@@ -1,0 +1,13 @@
+;; This dune file makes the IML model code available to our OCaml program as a library.
+
+(library
+ (name model)
+ (libraries imandra-prelude))
+
+;; Use imandra-extract to general ml files from iml.
+;; Due to restrictions in dune, we need a separate rule for each IML file.
+(rule
+ (targets gauss.ml)
+ (deps gauss.iml)
+ (action
+  (run imandra-extract -o %{targets} %{deps})))

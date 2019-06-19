@@ -1,0 +1,10 @@
+(** This file is a convenience for loading all the model code into the Imandra Commander REPL.
+
+    To use it, cd into this directory, run `imandra-repl` and enter at the prompt:
+
+    # #require "load.iml";;
+*)
+
+
+(* List all model files here, in dependency order. *)
+#mod_use "./gauss.iml";;
