@@ -1,4 +1,4 @@
 (executable
  (name main)
  (public_name my_program)
- (libraries model))
+ (libraries imandra_starter_template))

@@ -20,6 +20,10 @@ run:
 clean:
 	opam exec -- dune clean
 
+install-iml:
+	opam exec --switch=$(IMANDRA_SWITCH) -- dune build @install
+	opam exec --switch=$(IMANDRA_SWITCH) -- dune install
+
 .PHONY: test
 test:
 	opam exec --switch=$(IMANDRA_SWITCH) -- dune runtest test-vgs/

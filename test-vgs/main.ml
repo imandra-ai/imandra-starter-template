@@ -17,7 +17,7 @@ let tests =
     , [ verify_test_case
           ~name:"Gauss' theorem holds"
           ~hints:Hints.auto
-          "Gauss.gauss_theorem"
+          "Imandra_starter_template.Gauss.gauss_theorem"
       ]
     )
   ]
@@ -26,6 +26,6 @@ let () =
   Client.with_server ~server_name:"imandra_network_client" (fun () ->
       Tlcontext.update_exec_level NO_INTERP;
       Imandra.do_init ~linenoise:false ();
-      System.add_path "../src-iml";
-      System.use ~quiet:true "load.iml";
+      System.add_path "../src-iml/";
+      System.mod_use ~quiet:true "imandra_starter_template.iml";
       Alcotest.run "Verification Goals" tests)
