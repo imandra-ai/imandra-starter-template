@@ -12,17 +12,20 @@ let verify_test_case ~name ?hints goal =
         Alcotest.fail
           (Fmt.strf "%a" Top_result.pp_view (Top_result.Verify verify_result)))
 
+let tests =
+  [ ( "Guass"
+    , [ verify_test_case
+          ~name:"Gauss' theorem holds"
+          ~hints:Hints.auto
+          "Gauss.gauss_theorem"
+      ]
+    )
+  ]
+
 let () =
   Client.with_server ~server_name:"imandra_network_client" (fun () ->
       Tlcontext.update_exec_level NO_INTERP;
       Imandra.do_init ~linenoise:false ();
       System.add_path "../src-iml";
       System.use ~quiet:true "load.iml";
-      Alcotest.run "Verficiation Goals"
-        [ ( "Guass"
-          , [ verify_test_case
-                ~name:"Gauss' theorem holds"
-                ~hints:Hints.auto
-                "Gauss.gauss_theorem" ]
-          )
-        ])
+      Alcotest.run "Verficiation Goals" tests)

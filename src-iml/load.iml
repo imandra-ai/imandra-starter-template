@@ -2,7 +2,7 @@
 
     To use it, cd into this directory, run `imandra-repl` and enter at the prompt:
 
-    # #require "load.iml";;
+    # #use "load.iml";;
 *)
 
 
