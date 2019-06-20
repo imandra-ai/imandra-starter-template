@@ -28,4 +28,4 @@ let () =
       Imandra.do_init ~linenoise:false ();
       System.add_path "../src-iml";
       System.use ~quiet:true "load.iml";
-      Alcotest.run "Verficiation Goals" tests)
+      Alcotest.run "Verification Goals" tests)
