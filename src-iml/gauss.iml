@@ -8,4 +8,4 @@ let gauss_theorem n =
   n >= 0 ==>
   sum_integers_up_to n = (n * (n + 1)) / 2;;
 
-(* verify guass_theorem [@@auto];; *)
+(* verify gauss_theorem [@@auto];; *)
