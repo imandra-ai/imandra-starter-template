@@ -7,5 +7,10 @@ build: [
 ]
 depends: [
   "dune" {build}
+  "alcotest" {with-test}
   "imandra-prelude"
+  "imandra-base-bin" # provides imandra-extract
+  "imandra-client"
+  "imandra-client-bin" # provides imandra_client
+  "imandra-network" # provides imandra_network_client
 ]

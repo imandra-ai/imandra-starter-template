@@ -8,7 +8,7 @@ This repository contains a suggested layout for an Imandra project to support th
 
 ## Prerequisites
 
-- A working [Imandra installation](https://docs.imandra.ai/imandra-docs/notebooks/installation-simple/)
+- The [`opam` package manager](https://opam.ocaml.org/).
 
 
 ## Project layout
@@ -46,3 +46,11 @@ $ make run
 ```
 $ make test
 ```
+
+## Notes
+
+Because `imandra-client` is distributed as bytecode, it requires a very specific
+set of dependencies to function.
+
+If those dependencies conflict with your app's requirements, you can set up
+separate `opam` switches for your app and for running the `test-vgs`.

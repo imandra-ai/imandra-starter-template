@@ -1,11 +1,9 @@
 (** Some code we want to reason about. *)
 let rec sum_integers_up_to n =
   if n < 0 then 0 else n + sum_integers_up_to (n - 1)
-;;
+
 
 (** A verification goal. *)
-let gauss_theorem n =
-  n >= 0 ==>
-  sum_integers_up_to n = (n * (n + 1)) / 2;;
+let gauss_theorem n = n >= 0 ==> sum_integers_up_to n = n * (n + 1) / 2
 
 (* verify gauss_theorem [@@auto];; *)

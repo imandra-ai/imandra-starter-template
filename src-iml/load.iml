@@ -5,6 +5,4 @@
     # #use "load.iml";;
 *)
 
-
-(* List all model files here, in dependency order. *)
-#mod_use "./gauss.iml";;
+[@@@import "./gauss.iml"]
