@@ -4,7 +4,7 @@ _opam:
 	opam switch create . --empty
 	opam install -y ocaml-base-compiler.4.08.1
 	opam switch set-base ocaml-base-compiler.4.08.1
-  opam repo add imandra https://github.com/AestheticIntegration/opam-repository.git
+	opam repo add imandra https://github.com/AestheticIntegration/opam-repository.git
 
 setup: _opam
 	opam install -y --deps-only --with-test --working-dir .
