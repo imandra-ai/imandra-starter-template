@@ -1,9 +1,9 @@
 open Imandra_client_lib
 
 (** Run a verification goal as an alcotest test case. *)
-let verify_test_case ~name ?hints goal =
+let verify_test_case ~name ?hints ?upto goal =
   Alcotest.test_case name `Quick (fun () ->
-      let verify_result = Verify.top ~quiet:true ?hints goal in
+      let verify_result = Verify.top ?upto ?hints goal in
       match verify_result with
       | Top_result.V_proved _ | Top_result.V_proved_upto _ ->
           ()
@@ -15,8 +15,8 @@ let verify_test_case ~name ?hints goal =
 let tests =
   [ ( "Guass"
     , [ verify_test_case
-          ~name:"Gauss' theorem holds"
-          ~hints:Hints.auto
+          ~name:"Gauss' theorem holds" (* ~hints:Hints.auto *)
+          ~upto:(Upto_steps 10)
           "Gauss.gauss_theorem"
       ] )
   ]
