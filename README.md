@@ -39,12 +39,23 @@ $ imandra-repl
 ```
 $ make setup
 $ make run
+opam exec -- dune exec -- my_program
+Enter a positive integer: 55
+
+The sum of the integers from 1 to 55 is 1540
 ```
 
 ## Verification goals
 
 ```
 $ make test
+Testing `Verification Goals'.
+This run has ID `DBD01C83-FB0E-4757-B500-F73F166EBB7F'.
+
+  [OK]          Guass          0   Gauss' theorem holds.
+
+Full test results in `./_build/default/test-vgs/_build/_tests/Verification Goals'.
+Test Successful in 0.000s. 1 test run.
 ```
 
 ## Notes
