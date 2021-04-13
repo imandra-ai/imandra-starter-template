@@ -1,0 +1,16 @@
+[@@@require "imandra-goals"]
+[@@@import "../src-iml/gauss.iml"]
+
+module G = Imandra_goals [@@program]
+
+let () =
+  G.init
+    ~name:"gauss_theorem"
+    ~desc:"A verification goal"
+    ~hints:Imandra_surface.Hints.auto
+    ~expected:G.True
+    ()
+  [@@program]
+
+(** A verification goal. *)
+let gauss_theorem n = n >= 0 ==> Gauss.sum_integers_up_to n = n * (n + 1) / 2

@@ -1,6 +1,9 @@
 (test
  (name main)
+ (modules main)
  (modes byte)
- (libraries imandra-client.lib model alcotest)
+ (flags :standard -linkall)
+ (libraries imandra-client.lib)
  (deps
+  (glob_files ./*.iml)
   (glob_files ../src-iml/*.iml)))

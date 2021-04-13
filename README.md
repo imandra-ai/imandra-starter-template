@@ -28,7 +28,7 @@ $ imandra-repl
 ...
 # Gauss.sum_integers_up_to 10;;
 - : Z.t = 55
-# verify Gauss.gauss_theorem [@@auto];;
+# verify Gauss_vgs.gauss_theorem [@@auto];;
 [✓] Theorem proved.
 #
 ```
@@ -48,7 +48,7 @@ The sum of the integers from 1 to 55 is 1540
 ## Verification goals
 
 ```
-$ make test
+$ make test-vgs
 Testing `Verification Goals'.
 This run has ID `DBD01C83-FB0E-4757-B500-F73F166EBB7F'.
 

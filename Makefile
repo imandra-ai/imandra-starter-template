@@ -18,10 +18,21 @@ run:
 clean:
 	opam exec -- dune clean
 
-.PHONY: test
-test:
-	opam exec -- dune runtest test-vgs/
 
 .PHONY: format
 format:
 	opam exec -- dune build @fmt --auto-promote
+
+# Verification goals
+
+IMANDRA_SWITCH ?= /usr/local/var/imandra
+IMANDRA_SERVER ?= imandra_network_client
+dune_imandra = OPAMSWITCH="$(IMANDRA_SWITCH)" IMANDRA_SERVER="$(IMANDRA_SERVER)" opam exec -- dune
+
+.PHONY: test-vgs
+test-vgs:
+	$(dune_imandra) build @test-vgs/runtest
+
+.PHONY: watch-vgs
+watch-vgs:
+	$(dune_imandra) build @test-vgs/runtest -w
