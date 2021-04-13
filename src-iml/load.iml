@@ -6,3 +6,4 @@
 *)
 
 [@@@import "./gauss.iml"]
+[@@@import "../test-vgs/gauss_vgs.iml"]

@@ -1,31 +1,28 @@
 open Imandra_client_lib
 
-(** Run a verification goal as an alcotest test case. *)
-let verify_test_case ~name ?hints ?upto goal =
-  Alcotest.test_case name `Quick (fun () ->
-      let verify_result = Verify.top ?upto ?hints goal in
-      match verify_result with
-      | Top_result.V_proved _ | Top_result.V_proved_upto _ ->
-          ()
-      | Top_result.V_refuted _ | Top_result.V_unknown _ ->
-          Alcotest.fail
-            (Fmt.strf "%a" Top_result.pp_view (Top_result.Verify verify_result)))
-
-
-let tests =
-  [ ( "Guass"
-    , [ verify_test_case
-          ~name:"Gauss' theorem holds" (* ~hints:Hints.auto *)
-          ~upto:(Upto_steps 10)
-          "Gauss.gauss_theorem"
-      ] )
-  ]
-
+let quiet = true
 
 let () =
-  Client.with_server ~server_name:"imandra_network_client" (fun () ->
+  let server_name =
+    Sys.getenv_opt "IMANDRA_SERVER"
+    |> CCOpt.get_lazy (fun () ->
+           let default = "imandra_network_client" in
+           CCFormat.eprintf "IMANDRA_SERVER not set; using %S" default ;
+           default )
+  in
+  CCFormat.printf "Connecting to Imandra server...@." ;
+  Client.with_server ~server_name ~socket_dir:"/tmp" (fun () ->
       Tlcontext.update_exec_level NO_INTERP ;
       Imandra.do_init ~linenoise:false () ;
-      System.add_path "../src-iml" ;
-      System.use ~quiet:true "load.iml" ;
-      Alcotest.run "Verification Goals" tests)
+
+      CCFormat.printf "Loading model...@." ;
+      System.eval ~quiet {||} ;
+      System.use ~quiet "gauss_vgs.iml" ;
+
+      (* Add more VG files here *)
+      CCFormat.printf "Closing goals...@." ;
+      System.eval
+        ~quiet
+        {| [@@@require "imandra-goals-alcotest"];;
+         Imandra_goals_alcotest.run_tests ~report_name:"gauss" ()
+         |} )
