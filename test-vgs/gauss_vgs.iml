@@ -7,7 +7,7 @@ let () =
   G.init
     ~name:"gauss_theorem"
     ~desc:"A verification goal"
-    ~hints:Imandra_surface.Hints.auto
+    ~hints:(fun () -> Imandra_surface.Hints.auto)
     ~expected:G.True
     ()
   [@@program]
