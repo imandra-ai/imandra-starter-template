@@ -2,5 +2,6 @@
 
 (library
  (name model)
+ (public_name imandra-starter-template.model)
  (libraries imandra-prelude)
  (flags :standard -warn-error -33))

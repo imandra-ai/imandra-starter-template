@@ -1,4 +1,25 @@
+(library
+ (name python_bindings)
+ (preprocess
+  (pps ppx_let))
+ (public_name imandra-starter-template.python_bindings)
+ (modules bindings)
+ (libraries imandra-starter-template.model pythonlib))
+
 (executable
  (name main)
+ (modules main)
  (public_name my_program)
- (libraries model))
+ (libraries imandra-starter-template.model))
+
+(executable
+ (name main_python)
+ ; (public_name foo)
+ (modes
+  (native shared_object))
+ (libraries imandra-starter-template.model pythonlib)
+ (promote
+  (until-clean)
+  (into "wrapper/")
+  (only *.so))
+ (modules main_python))
