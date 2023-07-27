@@ -45,6 +45,12 @@ Enter a positive integer: 55
 The sum of the integers from 1 to 55 is 1540
 ```
 
+## Python bindings 
+Upon each `make build`, verify that a `main_python.so` shared object file is created within the `src-python/wrapper` 
+directory. This shared object file can be used to import as a python module. To do this, first add the python module to your
+Python PATH. Then, running the `test.py` file should then call the extracted OCaml function from within Python. 
+
+
 ## Verification goals
 
 ```
