@@ -3,3 +3,5 @@
 .imandra_init.log
 .merlin
 /*.install
+__pycache__/
+main_python.so
