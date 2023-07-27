@@ -1,8 +1,8 @@
-(lang dune 2.9)
+(lang dune 1.11)
 
 (name imandra-starter-template)
 
-; (using fmt 1.2)
+(using fmt 1.2)
 
 ;; Use imandra-extract to generate ml files from iml.
 
