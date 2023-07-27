@@ -23,6 +23,6 @@
   pythonlib)
  (promote
   (until-clean)
-  (into "wrapper/")
+  (into "../src-python/wrapper/")
   (only *.so))
  (modules main_python))
